@@ -2,14 +2,14 @@ env:
     MANIFEST: https://github.com/BootleggersROM/manifest.git -b tirimbino
     DEVICE: lavender
     OEM: xiaomi
-    DT_LINK: https://github.com/miteshx07/dt13.git 
+    DT_LINK: https://github.com/miteshx07/dt13.git -b 13.0
     DT_PATH: device/$OEM/$DEVICE
-    VT_LINK: https://github.com/miteshx07/vt13.git
+    VT_LINK: https://github.com/miteshx07/vt13.git -b 13.0
     VT_PATH: vendor/$OEM/$DEVICE
-    KT_LINK: https://github.com/miteshx07/kernel_xiaomi_lavender.git
-    RS_LINK: https://github.com/miteshx07/android_packages_resources_devicesettings.git
+    KT_LINK: https://github.com/miteshx07/kernel_xiaomi_lavender.git a13-qti-camfix
+    RS_LINK: https://github.com/miteshx07/android_packages_resources_devicesettings.git -b lineage-20.0
     RS_PATH: packages/resources/devicesettings
-    VA_LINK: https://github.com/miteshx07/packages_apps_ViPER4AndroidFX.git
+    VA_LINK: https://github.com/miteshx07/packages_apps_ViPER4AndroidFX-1.git -b 13.0
     VA_PATH: packages/apps/ViPER4AndroidFX
     PLATFORM: sdm660
     KT_PATH: kernel/$OEM/$PLATFORM
