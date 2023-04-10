@@ -1,18 +1,22 @@
 env:
-    MANIFEST: https://github.com/PixelExperience/manifest.git -b eleven-plus
-    DEVICE: miatoll
+    MANIFEST: https://github.com/BootleggersROM/manifest.git -b tirimbino
+    DEVICE: lavender
     OEM: xiaomi
-    DT_LINK: https://github.com/PixelExperience-Devices/device_xiaomi_miatoll.git
+    DT_LINK: https://github.com/miteshx07/dt13.git -b 13.0
     DT_PATH: device/$OEM/$DEVICE
-    VT_LINK: https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_xiaomi_miatoll.git
+    VT_LINK: https://github.com/miteshx07/vt13.git -b 13.0
     VT_PATH: vendor/$OEM/$DEVICE
-    KT_LINK: https://github.com/ArrowOS-Devices/android_kernel_xiaomi_sm6250.git
-    PLATFORM: sm6250
+    KT_LINK: https://github.com/miteshx07/kernel_xiaomi_lavender.git -b a13-qti-camfix
+    RS_LINK: https://github.com/miteshx07/android_packages_resources_devicesettings.git -b lineage-20.0
+    RS_PATH: packages/resources/devicesettings
+    VA_LINK: https://github.com/miteshx07/packages_apps_ViPER4AndroidFX.git -b main
+    VA_PATH: packages/apps/ViPER4AndroidFX
+    PLATFORM: sdm660
     KT_PATH: kernel/$OEM/$PLATFORM
     TARGET: bacon
     EXTRA_CMD: export SKIP_ABI_CHECKS=true
-    LUNCH_COMBO: aosp_${DEVICE}-userdebug
-    OUTPUT: PixelExperience*.zip
+    LUNCH_COMBO: bootleg_${DEVICE}-userdebug
+    OUTPUT: BootleggersROM*.zip
 
 task:
   name: "Setting Up, Syncing, Building and Uploading..."
@@ -40,6 +44,8 @@ task:
       - git clone $DT_LINK $DT_PATH
       - git clone $VT_LINK $VT_PATH
       - git clone $KT_LINK $KT_PATH
+      - git clone $RS_LINK $RS_PATH
+      - git clone $VA_LINK $VA_PATH
       - echo "============================"
       - echo "Syncing Complete!"
       - echo "============================"
@@ -53,7 +59,7 @@ task:
       - export USE_CCACHE=1
       - export CCACHE_EXEC=/usr/bin/ccache
       - ccache -M 50G
-      - . build/envsetup.sh
+      - source build/envsetup.sh
       - lunch "$LUNCH_COMBO"
       - mka -j31 $TARGET
      
